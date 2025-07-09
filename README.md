@@ -41,8 +41,6 @@ script.js
 
     <p id="thankYouMsg" style="display:none;">🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!</p>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html> Tech for girls
 let clickCounter = 0;
