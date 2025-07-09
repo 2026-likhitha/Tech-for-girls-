@@ -87,7 +87,7 @@ form.addEventListener("submit", async (e) => {
   const file = formData.get("screenshot");
 
   // Upload to Google Drive via Apps Script Web App
-  const webAppURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; // replace this
+  const webAppURL = 'https://script.google.com/macros/s/AKfycbyRExkSCxKphMj5WAvY-vZIFcbIjLgJVseKgtxSvC7RYLrEEy_fJlEqiQ1WIyRe_3In/exec'; // replace this
 
   const response = await fetch(webAppURL, {
     method: 'POST',
