@@ -31,7 +31,8 @@ script.js
         <button type="button" id="whatsappBtn">Share on WhatsApp</button>
         <p id="shareCount">Click count: 0/5</p>
         <p id="shareDoneMsg" style="display:none;">Sharing complete. Please continue.</p>
-      </div>
+      </div><br><br>
+<a id="whatsapp-share" href="#" target="_blank">📤 Share on WhatsApp</a>
       <label for="screenshot">📸 Upload WhatsApp Screenshot (proof of sharing):</label><br />
 <input type="file" id="screenshot" name="screenshot" accept="image/*" required /><br /
    Please upload a screenshot showing you shared the registration link on WhatsApp or other social media.
