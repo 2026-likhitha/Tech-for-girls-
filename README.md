@@ -32,8 +32,6 @@ script.js
         <p id="shareCount">Click count: 0/5</p>
         <p id="shareDoneMsg" style="display:none;">Sharing complete. Please continue.</p>
       </div>
-
-      <label>Upload Screenshot:</label>
       <label for="screenshot">📸 Upload WhatsApp Screenshot (proof of sharing):</label><br />
 <input type="file" id="screenshot" name="screenshot" accept="image/*" required /><br /
    Please upload a screenshot showing you shared the registration link on WhatsApp or other social media.
