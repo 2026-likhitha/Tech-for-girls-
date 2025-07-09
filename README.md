@@ -121,8 +121,7 @@ Tech for girls
 
         const shareText = encodeURIComponent("Hey Buddy! Join Tech For Girls: https://2026-likhitha.github.io/Tech-for-girls/");
         const url = `https://api.whatsapp.com/send?text=${shareText}`;
-        window.open(url, "_blank");
-
+        window.open(url, "_blankconst shareText = encodeURIComponent("Hey Buddy! Join Tech For Girls: https://2026-likhitha.github.io/Tech-for-girls/
         if (clickCounter === maxClicks) {
           whatsappBtn.disabled = true;
           shareCount.style.display = "none";
