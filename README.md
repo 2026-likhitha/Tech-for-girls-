@@ -34,7 +34,10 @@ script.js
       </div>
 
       <label>Upload Screenshot:</label>
-      <input type="file" id="screenshot" required>
+      <input type="file" id="screenshot" required><label for="screenshot">📸 Upload WhatsApp Screenshot (proof of sharing):</label><br />
+<input type="file" id="screenshot" name="screenshot" accept="image/*" required /><br /
+   Please upload a screenshot showing you shared the registration link on WhatsApp or other social media.
+</small>
 
       <button type="submit" id="submitBtn">Submit Registration</button>
     </form>
