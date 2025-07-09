@@ -1,14 +1,65 @@
 Tech for girls
-index.html
-style.css
-script.js
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html lang="me="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tech For Girls Registration</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="number"],
+    form input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #20c997;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:disabled {
+      background-color: #6c757d;
+    }
+
+    .whatsapp-share p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -16,90 +67,90 @@ script.js
 
     <form id="registrationForm">
       <label>Name:</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" required />
 
       <label>Phone Number:</label>
-      <input type="number" id="phone" required>
+      <input type="number" id="phone" required />
 
       <label>Email ID:</label>
-      <input type="email" id="email" required>
+      <input type="email" id="email" required />
 
       <label>College/Department:</label>
-      <input type="text" id="college" required>
+      <input type="text" id="college" required />
 
       <div class="whatsapp-share">
         <button type="button" id="whatsappBtn">Share on WhatsApp</button>
         <p id="shareCount">Click count: 0/5</p>
-        <p id="shareDoneMsg" style="display:none;">Sharing complete. Please continue.</p>
-      </div><br><br>
-<a id="whatsapp-share" href="#" target="_blank">📤 Share on WhatsApp</a>
-      <label for="screenshot">📸 Upload WhatsApp Screenshot (proof of sharing):</label><br />
-<input type="file" id="screenshot" name="screenshot" accept="image/*" required /><br /
-   Please upload a screenshot showing you shared the registration link on WhatsApp or other social media.
-</small>
+        <p id="shareDoneMsg" style="display:none;">✅ Sharing complete. Please continue.</p>
+      </div>
 
+      <br /><br />
+      <label for="screenshot">📸 Upload WhatsApp Screenshot:</label><br />
+      <input type="file" id="screenshot" name="screenshot" accept="image/*" required /><br />
+      <small>Please upload proof of WhatsApp sharing.</small>
+
+      <br /><br />
       <button type="submit" id="submitBtn">Submit Registration</button>
     </form>
 
     <p id="thankYouMsg" style="display:none;">🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!</p>
   </div>
-</body>
-</html> Tech for girls
-let clickCounter = 0;
-const maxClicks = 5;
 
-const shareBtn = document.getElementById('shareBtn');
-const clickCount = document.getElementById('clickCount');
-const submitBtn = document.getElementById('submitBtn');
-const form = document.getElementById('registrationForm');
-const message = document.getElementById('message');
+  <script>
+    let clickCounter = 0;
+    const maxClicks = 5;
 
-// Prevent multiple submissions
-if (localStorage.getItem("submitted") === "true") {
-  form.querySelectorAll("input, button").forEach(el => el.disabled = true);
-  message.textContent = "🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!";
-}
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const shareCount = document.getElementById('shareCount');
+    const shareDoneMsg = document.getElementById('shareDoneMsg');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('registrationForm');
+    const thankYouMsg = document.getElementById('thankYouMsg');
 
-shareBtn.addEventListener("click", () => {
-  if (clickCounter < maxClicks) {
-    clickCounter++;
-    clickCount.textContent = `Click Count: ${clickCounter}/${maxClicks}`;
-    
-   const shareText = encodeURIComponent("Hey Buddy! Join Tech For Girls: https://2026-likhitha.github.io/Tech-for-girls/");
-const url = `https://api.whatsapp.com/send?text=${shareText}`;
-window.open(url, "_blank");
-    
-    if (clickCounter === maxClicks) {
-      shareBtn.disabled = true;
-      clickCount.textContent = `Sharing complete. Please continue.`;
+    // Prevent multiple submissions
+    if (localStorage.getItem("submitted") === "true") {
+      form.querySelectorAll("input, button").forEach(el => el.disabled = true);
+      thankYouMsg.style.display = "block";
     }
-  }
-});
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    whatsappBtn.addEventListener("click", () => {
+      if (clickCounter < maxClicks) {
+        clickCounter++;
+        shareCount.textContent = `Click count: ${clickCounter}/${maxClicks}`;
 
-  if (clickCounter < maxClicks) {
-    alert("Please complete WhatsApp sharing first!");
-    return;
-  }
+        const shareText = encodeURIComponent("Hey Buddy! Join Tech For Girls: https://2026-likhitha.github.io/Tech-for-girls/");
+        const url = `https://api.whatsapp.com/send?text=${shareText}`;
+        window.open(url, "_blank");
 
-  const formData = new FormData(form);
-  const file = formData.get("screenshot");
+        if (clickCounter === maxClicks) {
+          whatsappBtn.disabled = true;
+          shareCount.style.display = "none";
+          shareDoneMsg.style.display = "block";
+        }
+      }
+    });
 
-  // Upload to Google Drive via Apps Script Web App
-  const webAppURL = 'https://script.google.com/macros/s/AKfycbyRExkSCxKphMj5WAvY-vZIFcbIjLgJVseKgtxSvC7RYLrEEy_fJlEqiQ1WIyRe_3In/exec'; // replace this
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  const response = await fetch(webAppURL, {
-    method: 'POST',
-    body: formData,
-  });
+      if (clickCounter < maxClicks) {
+        alert("Please complete WhatsApp sharing first!");
+        return;
+      }
 
-  if (response.ok) {
-    message.textContent = "🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!";
-    form.querySelectorAll("input, button").forEach(el => el.disabled = true);
-    localStorage.setItem("submitted", "true");
-  } else {
-    alert("Submission failed. Try again.");
-  }
-});
+      const formData = new FormData(form);
+      const webAppURL = 'https://script.google.com/macros/s/AKfycbyRExkSCxKphMj5WAvY-vZIFcbIjLgJVseKgtxSvC7RYLrEEy_fJlEqiQ1WIyRe_3In/exec';
+
+      const response = await fetch(webAppURL, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        thankYouMsg.style.display = "block";
+        form.querySelectorAll("input, button").forEach(el => el.disabled = true);
+        localStorage.setItem("submitted", "true");
+      } else {
+        alert("Submission failed. Try again.");
+      }
+    
