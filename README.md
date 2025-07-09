@@ -45,3 +45,60 @@ script.js
   <script src="script.js"></script>
 </body>
 </html> Tech for girls
+let clickCounter = 0;
+const maxClicks = 5;
+
+const shareBtn = document.getElementById('shareBtn');
+const clickCount = document.getElementById('clickCount');
+const submitBtn = document.getElementById('submitBtn');
+const form = document.getElementById('registrationForm');
+const message = document.getElementById('message');
+
+// Prevent multiple submissions
+if (localStorage.getItem("submitted") === "true") {
+  form.querySelectorAll("input, button").forEach(el => el.disabled = true);
+  message.textContent = "🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!";
+}
+
+shareBtn.addEventListener("click", () => {
+  if (clickCounter < maxClicks) {
+    clickCounter++;
+    clickCount.textContent = `Click Count: ${clickCounter}/${maxClicks}`;
+    
+    let url = `https://wa.me/?text=Hey%20Buddy,%20Join%20Tech%20For%20Girls%20Community!`;
+    window.open(url, "_blank");
+    
+    if (clickCounter === maxClicks) {
+      shareBtn.disabled = true;
+      clickCount.textContent = `Sharing complete. Please continue.`;
+    }
+  }
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (clickCounter < maxClicks) {
+    alert("Please complete WhatsApp sharing first!");
+    return;
+  }
+
+  const formData = new FormData(form);
+  const file = formData.get("screenshot");
+
+  // Upload to Google Drive via Apps Script Web App
+  const webAppURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; // replace this
+
+  const response = await fetch(webAppURL, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (response.ok) {
+    message.textContent = "🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!";
+    form.querySelectorAll("input, button").forEach(el => el.disabled = true);
+    localStorage.setItem("submitted", "true");
+  } else {
+    alert("Submission failed. Try again.");
+  }
+});
