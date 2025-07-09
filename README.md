@@ -64,8 +64,9 @@ shareBtn.addEventListener("click", () => {
     clickCounter++;
     clickCount.textContent = `Click Count: ${clickCounter}/${maxClicks}`;
     
-    let url = `https://wa.me/?text=Hey%20Buddy,%20Join%20Tech%20For%20Girls%20Community!`;
-    window.open(url, "_blank");
+   const shareText = encodeURIComponent("Hey Buddy! Join Tech For Girls: https://2026-likhitha.github.io/Tech-for-girls/");
+const url = `https://api.whatsapp.com/send?text=${shareText}`;
+window.open(url, "_blank");
     
     if (clickCounter === maxClicks) {
       shareBtn.disabled = true;
