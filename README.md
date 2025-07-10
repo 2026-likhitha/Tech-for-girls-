@@ -69,7 +69,11 @@ Tech for girls
       font-size: 14px;
     }
     <button id="whatsappShare">Share on WhatsApp</button>
-  </style>
+ <div class="whatsapp-share">
+  <button id="whatsappShare">Share on WhatsApp</button>
+  <p>Click the button to share this on WhatsApp!</p>
+</div>
+</style>
 </head>
 <body>
   <div class="container">
