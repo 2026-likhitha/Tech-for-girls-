@@ -6,7 +6,16 @@ Tech for girls
     body {
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
-      padding: 20px;
+      padding: 20px;<div class="container">
+  <h1>Tech for Girls Registration</h1>
+  
+  <!-- Your form goes here -->
+
+  <button id="whatsappShare">Share on WhatsApp</button>
+  <div class="whatsapp-share">
+    <p id="shareCount">Shared 0 times</p>
+  </div>
+</div>
     }
 
     .container {
