@@ -105,6 +105,24 @@ Tech for girls
 
     <p id="thankYouMsg" style="display:none;">🎉 Your submission has been recorded. Thanks for being part of Tech for Girls!</p>
   </div>
+  <script>
+  let shareCount = localStorage.getItem("whatsappShareCount") || 0;
+  document.getElementById("shareCount").innerText = `Shared ${shareCount} times`;
+
+  document.getElementById("whatsappShare").addEventListener("click", function () {
+    const text = encodeURIComponent("Hey! Register now for the Tech for Girls event.");
+    const url = encodeURIComponent(window.location.href); // Current page URL
+    const whatsappURL = `https://wa.me/?text=${text}%20${url}`;
+
+    // Open WhatsApp share link
+    window.open(whatsappURL, "_blank");
+
+    // Update and store share count
+    shareCount++;
+    localStorage.setItem("whatsappShareCount", shareCount);
+    document.getElementById("shareCount").innerText = `Shared ${shareCount} times`;
+  });
+</script>
 
   <script>
     let clickCounter = 0;
